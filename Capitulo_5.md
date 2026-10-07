@@ -386,17 +386,8 @@ Posteriormente, los cambios fueron integrados mediante Pull Requests, permitiend
 | Sprint # | Sprint 2 |
 | :--- | :--- |
 | **Sprint Planning Background** | |
-| Date | 27/09/2026 |
-| Time | 5:30 PM |
-| Location | Virtual |
-| Prepared By | Justo Yauricasa, Alexander Paolo |
-| Attendees (to planning meeting) | ##### 5.2.2.1. Sprint Planning 2
-
-| Sprint # | Sprint 2 |
-| :--- | :--- |
-| **Sprint Planning Background** | |
-| Date | 27/09/2026 |
-| Time | 5:30 PM |
+| Date | 29/09/2026 |
+| Time | 5:20 PM |
 | Location | Virtual |
 | Prepared By | Martinez Ramos, Bryan Felix |
 | Attendees (to planning meeting) | Alvarado Millan, Boris<br>Nawrocki Loureiro, Ian Andre |
