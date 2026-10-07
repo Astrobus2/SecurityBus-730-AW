@@ -589,7 +589,7 @@ Persistencia en el navegador: la sesión del conductor, el turno en curso, los t
 - Se generó la versión de producción con npm run build, que verifica los tipos con vue-tsc y luego compila con Vite, y se publicó con firebase deploy --only hosting.
 <br>
 
-![evidence-frontend-firebase](docs/assets/Cap5/sprint02/evWEB.png)
+![evidence-frontend-firebase](docs/assets/Cap5/sprint02/evWEB1.png)
 
 La Web Application desplegada está disponible en: [https://securitybus-730-aw-front-7bf31.web.app/](https://securitybus-ab878.web.app)
 
