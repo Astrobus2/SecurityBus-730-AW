@@ -687,32 +687,33 @@ Commits relacionados con la API en este Sprint:
 |894f6b3|fix: import express in entrypoint so Vercel detects the Express app|Se agregó la importación de Express en el archivo de entrada de la aplicación para que Vercel pueda detectar correctamente la aplicación Express durante el despliegue.|
 
 
-
 ##### 5.2.2.7. Software Deployment Evidence for Sprint Review
 
-Durante el Sprint 2, el equipo realizó el despliegue de la Web Application y de la Fake API. A diferencia del Sprint 1, donde solo se publicó la Landing Page en GitHub Pages, en esta iteración se consolidó una arquitectura de dos servicios: la aplicación web, publicada con Firebase Hosting, y la Fake API, publicada en Vercel. Ambos servicios se configuran mediante variables de entorno, de modo que la URL base de la API y las rutas de cada recurso no quedan escritas en el código.
+Durante el Sprint 2, el equipo realizó el despliegue de la Web Application y de la Fake API. A diferencia del Sprint 1, donde solo se publicó la Landing Page en GitHub Pages, en esta iteración se consolidó una arquitectura de dos servicios: la aplicación web, publicada con Firebase Hosting, y la Fake API, publicada en Vercel. La aplicación web se configura mediante variables de entorno (modo de la API y URL base), de modo que la dirección del servicio no queda escrita en el código fuente y puede cambiarse entre desarrollo y producción sin modificarlo.
 
 La arquitectura de despliegue se compone de los siguientes elementos:
 
-Web Application: aplicación Vue 3 compilada con Vite, cuyo resultado (carpeta dist) se publica en Firebase Hosting.
-Fake API: servicio RESTful basado en json-server, publicado en Vercel.
-Variables de entorno: archivos .env.development y .env.production con la URL base de la API, las rutas de los recursos y el servidor de tiles del mapa.
+Web Application: aplicación Vue 3 con TypeScript, compilada con Vite y organizada en bounded contexts bajo una arquitectura DDD. Su resultado (carpeta dist) se publica en Firebase Hosting.
+Fake API: servicio RESTful basado en json-server (archivos db.json y routes.json), ejecutado mediante un servidor Express y publicado en Vercel.
+Variables de entorno: archivos .env.development y .env.production con VITE_API_MODE (json-server) y VITE_API_BASE_URL (URL base de la API). En desarrollo apuntan a la API local (http://localhost:3000/api/v1), que se inicia con npm run api; en producción apuntan a la Fake API publicada en Vercel.
+Persistencia en el navegador: la sesión del conductor, el turno en curso, los turnos finalizados y las alertas se guardan en localStorage, por lo que no requieren un servicio de almacenamiento adicional.
 
 **Despliegue de la Fake API en Vercel**
 
 - Se creó la cuenta en Vercel y se importó el repositorio de la Fake API desde GitHub.
-- Se configuró json-server con el archivo db.json y se definió en routes.json la redirección del prefijo /api/v1/* hacia los  recursos.
+- Se configuró json-server con el archivo db.json, que contiene los recursos conductores, turnos, alertas, pasajeros y unidades, y se definió en routes.json la redirección del prefijo /api/v1/* hacia dichos recursos.
+- Se agregó un punto de entrada con Express para que Vercel detecte y ejecute la aplicación.
 - Se publicó el proyecto y Vercel generó la URL pública del servicio.
-- Se verificó el funcionamiento consultando los recursos desde el navegador y desde la Web Application.
+- Se verificó el funcionamiento consultando los recursos desde el navegador (por ejemplo, /api/v1/conductores) y desde la Web Application.
 
 ![evidence-fake-api](docs/assets/Cap5/sprint02/evidence-fake-api.png)
 
 **Despliegue de la Web Application en Firebase Hosting**
 
 - Se creó el proyecto en Firebase y se habilitó Hosting.
-- Se configuró firebase.json con la carpeta dist como directorio público y una regla de reescritura de todas las rutas hacia index.html, necesaria para que Vue Router funcione al recargar la página.
-- Se definió en .env.production la URL base de la Fake API desplegada.
-- Se generó la versión de producción con npm run build y se publicó con Firebase Hosting.
+- Se configuró firebase.json con la carpeta dist como directorio público y una regla de reescritura de todas las rutas hacia index.html, necesaria para que Vue Router funcione al recargar la página o abrir un enlace directo.
+- Se definió en .env.production el modo json-server y la URL base de la Fake API desplegada en Vercel.
+- Se generó la versión de producción con npm run build, que verifica los tipos con vue-tsc y luego compila con Vite, y se publicó con firebase deploy --only hosting.
 <br>
 
 ![evidence-frontend-firebase](docs/assets/Cap5/sprint02/evidence-frontend-firebase.png)
@@ -724,9 +725,9 @@ Repositorio de la Web Application: [https://github.com/AstroBusTeam/AstroBusTeam
 
 ##### 5.2.2.8. Team Collaboration Insights during Sprint
 
-Durante el Sprint 2, el equipo trabajó de forma colaborativa en la implementación de la Web Application y de la Fake API. Se mantuvo la estrategia GitFlow definida en la configuración del proyecto: cada funcionalidad se desarrolló en una rama feature/* creada a partir de develop, y los cambios se integraron mediante Pull Requests revisados por otro integrante antes de incorporarse. Los commits siguieron la convención Conventional Commits, lo que permitió mantener la trazabilidad de cada cambio.
+Durante el Sprint 2, el equipo trabajó de forma colaborativa en la implementación de la Web Application y de la Fake API. Se mantuvo la estrategia GitFlow definida en la configuración del proyecto: cada funcionalidad se desarrolló en una rama feature/* creada a partir de develop, y los cambios se integraron mediante Pull Requests revisados por otro integrante antes de incorporarse. Los mensajes de commit buscaron seguir la convención Conventional Commits definida en la sección 5.1.2, lo que permitió mantener la trazabilidad de cada cambio.
 
-El trabajo se distribuyó según la matriz de líderes y colaboradores de la sección 5.2.2.2. Cada integrante lideró un aspecto del Sprint y colaboró en los demás: IAM & Operations, Fleet Management, Alerts Management, Fake API y Deployment. Esta organización permitió que la interfaz, los datos de prueba y el despliegue avanzaran en paralelo. El seguimiento de las tareas se realizó en el tablero de Trello del Sprint.
+El trabajo se distribuyó según la matriz de líderes y colaboradores de la sección 5.2.2.2. Alexander Justo lideró los aspectos de login, dashboard y gestión de flota, y Andy Pillaca lideró el botón de alarma, los registros de alarma, el mapa y el sistema de notificaciones, colaborando ambos en los aspectos del otro. La Fake API y el despliegue se trabajaron de forma conjunta. Esta organización permitió que la interfaz, los datos de prueba y el despliegue avanzaran en paralelo. El seguimiento de las tareas se realizó en el tablero de Trello del Sprint.
 
 A continuación se presentan las evidencias extraídas de los repositorios del proyecto, que reflejan la participación de los integrantes durante el Sprint.
 
@@ -752,17 +753,18 @@ A continuación se presentan las evidencias extraídas de los repositorios del p
 
 <br>
 
-Las evidencias muestran que todos los integrantes participaron en la implementación, con commits distribuidos durante el Sprint e integraciones frecuentes hacia la rama develop. Entre las actividades colaborativas más relevantes destacan:
+Las evidencias muestran la participación de los integrantes en la implementación, con commits distribuidos durante el Sprint e integraciones frecuentes hacia la rama develop. Entre las actividades colaborativas más relevantes destacan:
 
-- Implementación de las vistas del conductor: verificación de identidad, dashboard, mapa y botón de pánico.
-- Desarrollo de los módulos de flota y alertas, con sus tablas, formularios y detalle.
-- Configuración de la Fake API y conexión de la aplicación mediante variables de entorno.
-- Internacionalización de la interfaz en español e inglés.
-- Despliegue de la Web Application y de la Fake API.
+- Implementación de las vistas del conductor: verificación de identidad con código de empleado, dashboard con el resumen del turno, mapa de la unidad, conteo de pasajeros, botón de pánico y registro de alertas.
+- Desarrollo del panel de administración: centro de control con el mapa de la flota, conductores, unidades, notificaciones, historial de turnos e impacto en números.
+- Organización del frontend por bounded contexts con capas de dominio, aplicación, infraestructura y presentación, y persistencia de la sesión, el turno y las alertas en localStorage.
+- Configuración de la Fake API con json-server y conexión de la aplicación mediante adaptadores y variables de entorno.
+- Despliegue de la Web Application en Firebase Hosting y de la Fake API en Vercel.
 
 Repositorio de la Web Application: [https://github.com/AstroBusTeam/AstroBusTeam-FrontEnd](https://github.com/AstroBusTeam/AstroBusTeam-FrontEnd)
 
 Repositorio de la Fake API: [https://github.com/AstroBusTeam/AstroBusTeam-fake-api-aw-730](https://github.com/AstroBusTeam/AstroBusTeam-fake-api-aw-730)
+
 
 ## Conclusiones
 
