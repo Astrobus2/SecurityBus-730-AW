@@ -400,25 +400,25 @@ Posteriormente, los cambios fueron integrados mediante Pull Requests, permitiend
 
 ##### 5.2.2.2. Aspect Leaders and Collaborators
 
-Durante el desarrollo del Sprint 2, se han identificado distintos aspectos funcionales relacionados al diseño y construcción de la aplicación web de SafeBus. Con el objetivo de organizar el trabajo del equipo de manera eficiente, se ha elaborado una matriz de Liderazgo y Colaboración (LACX), donde se asigna a cada integrante el rol de líder (L) en los módulos clave del desarrollo que se le han asignado, y el rol de colaborador (C) en otros aspectos. 
+Durante el desarrollo del Sprint 2, se han identificado distintos aspectos funcionales relacionados al diseño y construcción de la aplicación web de SecurityBus. Con el objetivo de organizar el trabajo del equipo de manera eficiente, se ha elaborado una matriz de Liderazgo y Colaboración (LACX), donde se asigna a cada integrante el rol de líder (L) en los módulos clave del desarrollo que se le han asignado, y el rol de colaborador (C) en otros aspectos.
 
 Los aspectos definidos para este Sprint, son:
 
-1. **Apartado de Login:** Registro e inicio de sesión.
-2. **Apartado de Dashboard:** Monitoreo de distancia, tiempo, pasajeros, dinero recuadado, ruta y boton de finalizado.
-3. **Gestion de flora:** Creacion de conductor y buses. Ademas, de la vinculacion conductor con bus.
-4. **Boton de alarma:** Boton que ayuda a mostar el peligro de un conducntor, su ubicacion y estado.
-5. **Registros de Alarma:** Visualizacion de reguistos de alarmas y sus estados.
-6. **Mapa:** Mostrar las alertas en el mapa.
-7. **Sistema de notificaciones:** Envio de alerta a los busces cercanos.
-
+1. **Apartado de Login:** Verificación del conductor mediante su código de empleado (o el escáner de código QR), validación contra la API y conservación de la sesión en localStorage.
+2. **Apartado de Dashboard:** Monitoreo de distancia, tiempo, pasajeros, recaudación y ruta operada, conteo de pasajeros a bordo, protocolo de cierre y botón de finalizar servicio, con el resumen del turno.
+3. **Gestión de flota:** Panel de administración para consultar conductores y unidades con su estado y ruta, y revisar el historial de turnos y el impacto en números.
+4. **Botón de alarma:** Botón de pánico que envía la alerta de un conductor con la ubicación de su unidad y muestra la confirmación con el estado de la central.
+5. **Registros de alarma:** Visualización de las alertas con su nivel, tipo, hora, coordenadas y estado, y su resolución desde el centro de control.
+6. **Mapa:** Visualización de la posición de la unidad del conductor y, en el centro de control, de toda la flota con sus alertas, sobre OpenStreetMap.
+7. **Sistema de notificaciones:** Consulta de los destinatarios de las alertas y del registro de entregas de notificaciones.
 
 A continuación, se presenta la matriz de responsabilidades del equipo:
 
-| Team Member (Last Name, First Name) | GitHub Username | Login | Configuration of Dashboard | Vegetation management | Alarm button | Alarm Logs | Map | Notification system |
+| Team Member (Last Name, First Name) | GitHub Username | Login | Dashboard | Fleet management | Alarm button | Alarm logs | Map | Notification system |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Justo Yauricasa, Alexander Paolo | AlexanderJusto | L | L | L | C | C | C | C |
-| Pillaca Gonzales, Andy Saúl | DiazDeveloper | C | C | C | L | L | L | L |
+| Martinez Ramos, Bryan Felix | Bryan Martinez | L | L | L | C | C | C | C |
+| 	Alvarado Millan, Boris | Boris Alvarado | C | C | C | L | L | L | L |
+| 	Nawrocki Loureiro, Ian Andre | Ian | L | C | C | C | C | C | L |
 
 **Nota:** Distribución de responsabilidades de los integrantes del equipo durante el Sprint 2, indicando el liderazgo (L) y la colaboración (C) en cada funcionalidad desarrollada.
 
