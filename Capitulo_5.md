@@ -507,117 +507,48 @@ URL del video de ejecución de la Web Application: [https://upcedupe-my.sharepoi
 
 ##### 5.2.2.6. Services Documentation Evidence for Sprint Review
 
-Durante el Sprint 2, el equipo implementó y desplegó una Fake API RESTful con json-server, que simula el comportamiento del backend de SecurityBus mientras se desarrollan los servicios reales. La API expone siete recursos (conductores, vehículos, asignaciones, turnos, alertas, destinatarios y entregas) y soporta operaciones CRUD con los verbos GET, POST, PUT y DELETE. Su configuración de rutas redirige el prefijo /api/v1 a los recursos de la base de datos, de forma que la aplicación consume la misma estructura de URL que tendrá el servicio definitivo. Esto permitió desacoplar la aplicación web de datos locales y realizar pruebas colaborativas sobre una API pública.
+Durante el Sprint 2, el equipo implementó una Fake API RESTful con json-server, que simula el comportamiento del backend de SecurityBus mientras se desarrollan los servicios reales. La API expone cinco recursos (conductores, turnos, alertas, pasajeros y unidades), definidos en el archivo db.json, y soporta operaciones CRUD con los verbos GET, POST, PUT, PATCH y DELETE. Su configuración de rutas (routes.json) redirige el prefijo /api/v1 a los recursos de la base de datos, de forma que la aplicación consume la misma estructura de URL que tendrá el servicio definitivo.
+
+La Web Application accede a la API mediante adaptadores de la capa de infraestructura de cada bounded context, que implementan los repositorios definidos en el dominio. La URL base se configura con las variables de entorno VITE_API_MODE y VITE_API_BASE_URL, por lo que reemplazar la Fake API por los servicios reales solo requiere cambiar el adaptador, sin modificar el dominio ni los casos de uso. Esto permitió desacoplar la aplicación web de datos locales y realizar pruebas colaborativas sobre una API pública.
 
 URL base del servicio: [https://astro-bus-team-fake-api-aw-730.vercel.app](https://astro-bus-team-fake-api-aw-730.vercel.app)
 
 Dado que json-server no genera documentación OpenAPI automáticamente, en este Sprint los endpoints se documentan en las siguientes tablas. La especificación OpenAPI formal se elaborará con los Web Services definitivos en los siguientes Sprints.
 
-|Endpoint|Acciones implementadas|Descripción|
-|--------|----------------------|-----------|
-|/drivers|GET,POST,PUT,DELETE|Gestión de conductores|
-|/vehicles|GET,POST,PUT,DELETE|Gestión de vehículos de la flota|
-|/assigments|GET,POST,DELETE|Asociación entre conductor, vehículo y ruta|
-|/shifts|GET,POST,PUT|Registro de turnos de servicio|
-|/alerts|GET,POST,PUT,DELETE|Emisión, consulta, actualización y reenvío de alertas|
-|/recipients|GET,PUT|Destinatarios de las alertas|
-|/deliveries|GET,POST|Registro de entregas de notificaciones|
+**Recursos expuestos**
 
-|Acción|Verbo HTTP|Sintaxis de llamada|Parámetros|Response|
-|------|---------|-------------------|------------|-------|
-|Listar recursos|GET|/{recurso}|Opcionales: filtros por campo, por ejemplo ?employeeCode=SF-90210 o ?driverId=1&status=active|200 OK con un arreglo JSON.|
-|Obtener por id|GET|/{recurso}/{id}|id en la ruta|200 OK con el recurso. 404 si no existe.|
-|Crear|POST|/{recurso}|Cuerpo JSON con los campos del recurso|201 Created con el recurso y su id.|
-|Actualizar|PUT|/{recurso}/{id}|id en la ruta y cuerpo JSON completo|200 OK con el recurso actualizado.|
-|Eliminar|DELETE|/{recurso}/{id}|id en la ruta|	200 OK con un objeto vacío.|
+| Endpoint | Acciones soportadas | Acciones que usa la Web Application | Descripción |
+| :--- | :--- | :--- | :--- |
+| /conductores | GET, POST, PUT, PATCH, DELETE | GET | Datos de los conductores; se usa para verificar el código de empleado al iniciar sesión. |
+| /unidades | GET, POST, PUT, PATCH, DELETE | GET, PATCH | Unidades de la flota con su posición, ruta y estado; se usa en el mapa y el centro de control. |
+| /alertas | GET, POST, PUT, PATCH, DELETE | POST, PATCH | Emisión y resolución de alertas de emergencia. |
+| /pasajeros | GET, POST, PUT, PATCH, DELETE | GET | Registros del conteo de pasajeros por unidad. |
+| /turnos | GET, POST, PUT, PATCH, DELETE | Ninguna | Registro de turnos de servicio. En esta versión el turno en curso y los turnos finalizados se guardan en localStorage. |
 
-Ejemplo 1. Verificación del conductor por código de empleado (US01 y US14).
+**Modelo de datos**
 
-```
-GET /api/v1/drivers?employeeCode=SF-90210
-```
+| Recurso | Campos |
+| :--- | :--- |
+| conductores | id, nombre, apellido, dni, codigoEmpleado, codigoQr, placa, estado, foto |
+| unidades | id, placa, conductor, ruta, estado, lat, lng, pasajeros, velocidad |
+| alertas | id, conductorId, turnoId, tipo, nivelRiesgo, latitud, longitud, timestamp, descripcion, resuelta |
+| pasajeros | id, turnoId, busId, totalAbordaron, totalBajaron, totalAbordo, timestamp, anomalia |
+| turnos | id, conductorId, busId, rutaNombre, rutaOrigen, rutaDestino, distanciaKm, tiempoSegundos, pasajeros, recaudacion, estado, fechaInicio, fechaFin |
 
-El response es un arreglo con el conductor que coincide, junto con los datos de su licencia y su estado:
+Valores de los campos de estado: en unidades, estado es ACTIVO, INACTIVO o ALERTA; en alertas, tipo es PANICO, VELOCIDAD, PASAJEROS o DESVIO (sin tilde) y nivelRiesgo es CRITICO, ALTO, MEDIO o BAJO.
 
-```
-[
-  {
-    "id": 1,
-    "employeeCode": "SF-90210",
-    "firstName": "Marcos",
-    "lastName": "Silva",
-    "dni": "77443322",
-    "category": "A-IIIb",
-    "licenseNumber": "Q77443322",
-    "licenseExpiry": "2027-05-12",
-    "points": 14,
-    "rating": 4.9,
-    "yearsExperience": 12,
-    "status": "active"
-  }
-]
-```
+**Acciones sobre los recursos**
 
-Ejemplo 2. Consulta de la asignación vigente del conductor (US14 y US15).
+| Acción | Verbo HTTP | Sintaxis de llamada | Parámetros | Response |
+| :--- | :--- | :--- | :--- | :--- |
+| Listar recursos | GET | /api/v1/{recurso} | Opcionales: filtros por campo, por ejemplo ?codigoEmpleado=EMP-001, ?estado=ALERTA o ?resuelta=false | 200 OK con un arreglo JSON. Si ningún registro coincide con el filtro, devuelve 200 con un arreglo vacío. |
+| Obtener por id | GET | /api/v1/{recurso}/{id} | id en la ruta | 200 OK con el recurso. 404 si no existe. |
+| Crear | POST | /api/v1/{recurso} | Cuerpo JSON con los campos del recurso | 201 Created con el recurso y su id generado. |
+| Reemplazar | PUT | /api/v1/{recurso}/{id} | id en la ruta y cuerpo JSON completo | 200 OK con el recurso reemplazado. |
+| Actualizar parcialmente | PATCH | /api/v1/{recurso}/{id} | id en la ruta y cuerpo JSON solo con los campos a modificar | 200 OK con el recurso actualizado. |
+| Eliminar | DELETE | /api/v1/{recurso}/{id} | id en la ruta | 200 OK con un objeto vacío. |
 
-```
-GET /api/v1/assignments?driverId=1&status=active
-```
-
-```
-[
-  {
-    "id": 1,
-    "driverId": 1,
-    "vehicleId": 1,
-    "route": "R-42 Terminal Norte - Estación Central",
-    "startTime": "05:30",
-    "status": "active"
-  }
-]
-```
-
-Ejemplo 3. Emisión de una alerta de pánico con la ubicación de la unidad (US03, US05 y US42).
-
-```
-POST /api/v1/alerts
-Content-Type: application/json
-```
-
-```
-{
-  "code": "AL-9928",
-  "vehicleId": 4,
-  "type": "Botón de pánico",
-  "receiver": "UNIDAD_MOVIL_04",
-  "attempts": 1,
-  "status": "pending",
-  "createdAt": "2026-10-04T14:22:05",
-  "latitude": -12.042,
-  "longitude": -77.034
-}
-```
-
-El response es 201 Created con el mismo objeto y el id generado. Mientras la alerta no sea confirmada, puede reenviarse con PUT /alerts/{id}, que incrementa attempts hasta un máximo de 3.
-
-Se adjuntan las siguientes capturas de la interacción con la API usando los datos de muestra:
-
-![evidencia1](docs/assets/Cap5/sprint02/evidencia1.png)
-
-<br>
-
-![evidencia2](docs/assets/Cap5/sprint02/evidencia2.png)
-
-
-Repositorio de la Fake API: [https://github.com/AstroBusTeam/AstroBusTeam-fake-api-aw-730](https://github.com/AstroBusTeam/AstroBusTeam-fake-api-aw-730)
-
-Commits relacionados con la API en este Sprint:
-
-|Commit Id|Commit Message|Descripción Técnica|
-|---------|---------------|------------------|
-|f6589ff  |feat: deploy fake-api| Se implementó la configuración inicial necesaria para desplegar la Fake API, preparando el proyecto para ejecutarse en un entorno de producción mediante Vercel.|
-|aaaac67  |fix: import express in entrypoint for Vercel detection|Se corrigió el punto de entrada de la aplicación incorporando la importación de Express, permitiendo que Vercel identifique correctamente el servidor y pueda ejecutar la Fake API.|
-|894f6b3|fix: import express in entrypoint so Vercel detects the Express app|Se agregó la importación de Express en el archivo de entrada de la aplicación para que Vercel pueda detectar correctamente la aplicación Express durante el despliegue.|
+Ejemplo 1. Verificación del conductor por código de empleado (US-01 y US-14).
 
 
 ##### 5.2.2.7. Software Deployment Evidence for Sprint Review
