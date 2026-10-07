@@ -426,29 +426,26 @@ A continuación, se presenta la matriz de responsabilidades del equipo:
 
 | User Story Id | User Story Title | Work Item/Task Id | Work Item/Task Title | Description | Estimation | Assigned To | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| US-01 | Autenticación del conductor al iniciar la jornada | T01 | UI Autenticación Conductor | Maquetación e ingreso de código. | 3h | Alexander Justo | To Do |
-| US-14 | Verificación de habilitación del conductor | T08 | Lógica Verificación Habilitación | Validación de permisos del conductor. | 3h | Alexander Justo | To Do |
-| US-15 | Vínculo entre conductor y unidad | T09 | Registro Asignación Conductor | Asociación del conductor a la unidad. | 3h | Alexander Justo | To Do |
-| US-02 | Apertura del registro de servicio | T02 | UI Apertura Servicio | Botón para iniciar el servicio. | 2h | Alexander Justo | To Do |
-| US-03 | Envío de alerta desde la unidad | T03 | UI Botón de Alerta | Botón de pánico silencioso. | 3h | Andy Pillaca | To Do |
-| US-04 | Notificación de la alerta a la central | T04 | Servicio Recepción Alerta | Envío de alerta a la central. | 4h | Andy Pillaca | To Do |
-| US-42 | Ubicación asociada al evento | T20 | Captura GPS en Alerta | Captura de ubicación GPS. | 3h | Andy Pillaca | To Do |
-| US-05 | Persistencia del evento de emergencia | T05 | Persistencia de Alertas | Guardado del evento de alerta. | 3h | Andy Pillaca | To Do |
-| US-23 | Acuse de recepción de la alerta | T11 | Módulo Acuse de Recibo | Registro de confirmación de alerta. | 3h | Andy Pillaca | To Do |
-| US-24 | Reenvío de alertas sin confirmar | T12 | Mecanismo Reintentos Alerta | Reintento de envío no confirmado. | 4h | Andy Pillaca | To Do |
-| US-40 | Clasificación de alertas por gravedad | T19 | Priorización de Alertas | Asignación de nivel de prioridad. | 3h | Andy Pillaca | To Do |
-| US-33 | Difusión de la alerta a varios destinatarios | T17 | Servicio Multidifusión Alertas | Envío a múltiples destinatarios. | 4h | Andy Pillaca | To Do |
-| US-43 | Seguimiento de la unidad asignada | T21 | UI Mapas y Seguimiento GPS | Visualización GPS en mapa. | 5h | Andy Pillaca | To Do |
-| US-06 | Conteo automático de ocupantes | T06 | Integración Sensores Pasajeros | Conteo de pasajeros a bordo. | 4h | Alexander Justo | To Do |
-| US-07 | Disponibilidad del conteo para reportes | T07 | API Consulta Ocupación | Consulta del número de ocupantes. | 2h | Alexander Justo | To Do |
-| US-25 | Cierre del registro de servicio | T13 | UI Cierre Servicio | Botón para finalizar el servicio. | 2h | Alexander Justo | To Do |
-| US-26 | Consulta del estado del propio servicio | T14 | UI Estado de Servicio Conductor | Vista del estado actual del viaje. | 3h | Alexander Justo | To Do |
-| US-27 | Tablero de estado de la flota | T15 | Dashboard Flota | Panel general de la flota. | 5h | Alexander Justo | To Do |
-| US-16 | Revisión del historial de emergencias | T10 | UI Historial Emergencias | Listado de emergencias pasadas. | 4h | Andy Pillaca | To Do |
-| US-28 | Seguimiento de la ocupación en operación | T16 | UI Reporte Ocupación Flota | Monitoreo del nivel de carga. | 4h | Alexander Justo | To Do |
-| US-35 | Promedio de pasajeros por viaje | T18 | Cálculo Estadístico Ocupación | Cálculo promedio de pasajeros. | 3h | Alexander Justo | To Do |
+| US-01 | Autenticación del conductor al iniciar la jornada | T01 | UI Autenticación Conductor | Pantalla de login con código de empleado y escáner QR (simulado). | 3h | Alexander Justo | Done |
+| US-14 | Verificación de habilitación del conductor | T08 | Caso de uso Iniciar Sesión | Validación del código de empleado contra la API antes de abrir la sesión. | 3h | Alexander Justo | Done |
+| US-15 | Vínculo entre conductor y unidad | T09 | UI Asignación de Unidades | Vista de las unidades con su conductor, ruta y estado. | 3h | Alexander Justo | Done |
+| US-02 | Apertura del registro de servicio | T02 | Inicio de Turno | Apertura automática del turno al autorizar el acceso del conductor. | 2h | Alexander Justo | Done |
+| US-03 | Envío de alerta desde la unidad | T03 | UI Botón de Pánico | Botón de pánico en el menú lateral y pantalla de confirmación de la alerta. | 3h | Andy Pillaca | Done |
+| US-04 | Notificación de la alerta a la central | T04 | Caso de uso Levantar Alerta | Envío de la alerta a la API para que aparezca en el centro de control. | 4h | Andy Pillaca | Done |
+| US-42 | Ubicación asociada al evento | T20 | Ubicación en Alerta | Registro de las coordenadas de la unidad (simuladas) al emitir la alerta. | 3h | Andy Pillaca | Done |
+| US-05 | Persistencia del evento de emergencia | T05 | Persistencia de Alertas | Guardado de la alerta en la API y en localStorage. | 3h | Andy Pillaca | Done |
+| US-40 | Clasificación de alertas por gravedad | T19 | Niveles de Gravedad | Asignación del nivel (crítico, alto, medio o bajo) según el tipo de alerta. | 3h | Andy Pillaca | Done |
+| US-33 | Difusión de la alerta a varios destinatarios | T17 | UI Notificaciones | Vista de destinatarios activos y registro de entregas (datos de muestra). | 4h | Andy Pillaca | Done |
+| US-43 | Seguimiento de la unidad asignada | T21 | UI Mapa y Seguimiento | Mapa con la posición de la unidad, actualizada en tiempo real. | 5h | Andy Pillaca | Done |
+| US-06 | Conteo automático de ocupantes | T06 | UI Conteo de Pasajeros | Conteo simulado de pasajeros a bordo, con nivel de ocupación y aviso de anomalía. | 4h | Alexander Justo | Done |
+| US-07 | Disponibilidad del conteo para reportes | T07 | Consulta de Registros de Pasajeros | Consulta a la API de los últimos registros de pasajeros. | 2h | Alexander Justo | Done |
+| US-25 | Cierre del registro de servicio | T13 | UI Cierre de Servicio | Botón para finalizar el servicio y archivar el turno en localStorage. | 2h | Alexander Justo | Done |
+| US-26 | Consulta del estado del propio servicio | T14 | UI Estado de Servicio | Dashboard con distancia, tiempo, pasajeros, recaudación y resumen del turno. | 3h | Alexander Justo | Done |
+| US-27 | Tablero de estado de la flota | T15 | Dashboard Flota | Centro de control con indicadores, mapa de la flota y lista de unidades. | 5h | Alexander Justo | Done |
+| US-16 | Revisión del historial de emergencias | T10 | UI Registro de Alertas | Listado de alertas con nivel, tipo, hora, coordenadas y estado. | 4h | Andy Pillaca | Done |
+| US-28 | Seguimiento de la ocupación en operación | T16 | Indicador de Ocupación | Pasajeros a bordo de la flota en el centro de control y por unidad. | 4h | Alexander Justo | Done |
 
-**Nota:** Relación entre las historias de usuario del Sprint 2 y las tareas planificadas para su implementación, incluyendo su estimación, responsable asignado y estado de ejecución.
+**Nota:** Relación entre las historias de usuario del Sprint 2 y las tareas implementadas, incluyendo su estimación, responsable asignado y estado de ejecución. Las historias US-23, US-24 y US-35 no se implementaron en este Sprint y pasan al siguiente.
 
 ##### 5.2.2.4. Development Evidence for Sprint Review
 
