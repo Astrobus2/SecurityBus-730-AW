@@ -512,7 +512,7 @@ Durante el Sprint 2, el equipo implementó una Fake API RESTful con json-server,
 
 La Web Application accede a la API mediante adaptadores de la capa de infraestructura de cada bounded context, que implementan los repositorios definidos en el dominio. La URL base se configura con las variables de entorno VITE_API_MODE y VITE_API_BASE_URL, por lo que reemplazar la Fake API por los servicios reales solo requiere cambiar el adaptador, sin modificar el dominio ni los casos de uso. Esto permitió desacoplar la aplicación web de datos locales y realizar pruebas colaborativas sobre una API pública.
 
-URL base del servicio: [https://astro-bus-team-fake-api-aw-730.vercel.app](https://astro-bus-team-fake-api-aw-730.vercel.app)
+URL base del servicio: [https://astro-bus-team-fake-api-aw-730.vercel.app](https://security-bus-fake-api.vercel.app/)
 
 Dado que json-server no genera documentación OpenAPI automáticamente, en este Sprint los endpoints se documentan en las siguientes tablas. La especificación OpenAPI formal se elaborará con los Web Services definitivos en los siguientes Sprints.
 
@@ -549,143 +549,16 @@ Valores de los campos de estado: en unidades, estado es ACTIVO, INACTIVO o ALERT
 | Actualizar parcialmente | PATCH | /api/v1/{recurso}/{id} | id en la ruta y cuerpo JSON solo con los campos a modificar | 200 OK con el recurso actualizado. |
 | Eliminar | DELETE | /api/v1/{recurso}/{id} | id en la ruta | 200 OK con un objeto vacío. |
 
-Ejemplo 1. Verificación del conductor por código de empleado (US-01 y US-14).
-
-```
-GET /api/v1/conductores?codigoEmpleado=EMP-001
-```
-
-El response es un arreglo con el conductor que coincide:
-
-```
-[
-  {
-    "id": 1,
-    "nombre": "MARCOS E.",
-    "apellido": "SILVA",
-    "dni": "12345678",
-    "codigoEmpleado": "EMP-001",
-    "codigoQr": "QR-SF-90210-TX",
-    "placa": "ABC-1234",
-    "estado": "ACTIVO",
-    "foto": "https://i.pravatar.cc/80?img=11"
-  }
-]
-```
-
-Si el código no existe, la API responde 200 con un arreglo vacío ([]), y la aplicación lo interpreta como credencial inválida.
-
-Ejemplo 2. Consulta de las unidades en alerta para el seguimiento de la flota (US-43 y US-27).
-
-```
-GET /api/v1/unidades?estado=ALERTA
-```
-
-```
-[
-  {
-    "id": 3,
-    "placa": "GHI-9012",
-    "conductor": "Pedro Mamani",
-    "ruta": "R-07",
-    "estado": "ALERTA",
-    "lat": -12.07,
-    "lng": -77.05,
-    "pasajeros": 45,
-    "velocidad": 75
-  }
-]
-```
-
-Ejemplo 3. Emisión de una alerta de pánico con la ubicación de la unidad (US-03, US-05, US-42 y US-40).
-
-```
-POST /api/v1/alertas
-Content-Type: application/json
-```
-
-```
-{
-  "conductorId": 1,
-  "turnoId": 0,
-  "tipo": "PANICO",
-  "nivelRiesgo": "CRITICO",
-  "latitud": -12.0464,
-  "longitud": -77.0428,
-  "timestamp": "2026-10-07T14:22:05.000Z",
-  "descripcion": "Alerta PÁNICO generada en unidad ABC-1234",
-  "resuelta": false
-}
-```
-
-El response es 201 Created con el mismo objeto y el id generado (en este caso, "id": 5). La aplicación crea primero la alerta de forma local y la guarda en localStorage, y luego reemplaza el id provisional por el que devuelve la API.
-
-Ejemplo 4. Resolución de una alerta desde el centro de control (US-16).
-
-```
-PATCH /api/v1/alertas/5
-Content-Type: application/json
-```
-
-```
-{ "resuelta": true }
-```
-
-El response es 200 OK con la alerta completa y el campo resuelta en true.
-
-Ejemplo 5. Actualización de la posición de una unidad (US-43).
-
-```
-PATCH /api/v1/unidades/1
-Content-Type: application/json
-```
-
-```
-{ "lat": -12.0461, "lng": -77.0425 }
-```
-
-El response es 200 OK con la unidad actualizada. Como json-server escribe cada cambio en el archivo db.json, la aplicación envía la ubicación de una misma unidad como máximo una vez cada 10 segundos.
-
-Ejemplo 6. Consulta de los registros de pasajeros con anomalías (US-06 y US-07).
-
-```
-GET /api/v1/pasajeros?anomalia=true
-```
-
-```
-[
-  {
-    "id": 3,
-    "turnoId": 3,
-    "busId": "BUS-7729",
-    "totalAbordaron": 90,
-    "totalBajaron": 5,
-    "totalAbordo": 85,
-    "timestamp": "2025-04-26T07:30:00",
-    "anomalia": true
-  }
-]
-```
-
 Se adjuntan las siguientes capturas de la interacción con la API usando los datos de muestra:
 
-![evidencia1](docs/assets/Cap5/sprint02/evidencia1.png)
+![evidencia1](docs/assets/Cap5/sprint02/ev1.png)
 
 <br>
 
-![evidencia2](docs/assets/Cap5/sprint02/evidencia2.png)
+![evidencia2](docs/assets/Cap5/sprint02/ev2.png)
 
 
-Repositorio de la Fake API: [https://github.com/AstroBusTeam/AstroBusTeam-fake-api-aw-730](https://github.com/AstroBusTeam/AstroBusTeam-fake-api-aw-730)
-
-Commits relacionados con la API en este Sprint:
-
-|Commit Id|Commit Message|Descripción Técnica|
-|---------|---------------|------------------|
-|f6589ff  |feat: deploy fake-api| Se implementó la configuración inicial necesaria para desplegar la Fake API, preparando el proyecto para ejecutarse en un entorno de producción mediante Vercel.|
-|aaaac67  |fix: import express in entrypoint for Vercel detection|Se corrigió el punto de entrada de la aplicación incorporando la importación de Express, permitiendo que Vercel identifique correctamente el servidor y pueda ejecutar la Fake API.|
-|894f6b3|fix: import express in entrypoint so Vercel detects the Express app|Se agregó la importación de Express en el archivo de entrada de la aplicación para que Vercel pueda detectar correctamente la aplicación Express durante el despliegue.|
-
+Repositorio de la Fake API: [https://github.com/AstroBusTeam/AstroBusTeam-fake-api-aw-730](https://github.com/Astrobus2/SecurityBus-fake-api)
 
 ##### 5.2.2.7. Software Deployment Evidence for Sprint Review
 
