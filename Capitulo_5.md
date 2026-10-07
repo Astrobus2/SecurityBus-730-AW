@@ -426,38 +426,38 @@ A continuación, se presenta la matriz de responsabilidades del equipo:
 
 | User Story Id | User Story Title | Work Item/Task Id | Work Item/Task Title | Description | Estimation | Assigned To | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| US-01 | Autenticación del conductor al iniciar la jornada | T01 | UI Autenticación Conductor | Pantalla de login con código de empleado y escáner QR (simulado). | 3h | Alexander Justo | Done |
-| US-14 | Verificación de habilitación del conductor | T08 | Caso de uso Iniciar Sesión | Validación del código de empleado contra la API antes de abrir la sesión. | 3h | Alexander Justo | Done |
-| US-15 | Vínculo entre conductor y unidad | T09 | UI Asignación de Unidades | Vista de las unidades con su conductor, ruta y estado. | 3h | Alexander Justo | Done |
-| US-02 | Apertura del registro de servicio | T02 | Inicio de Turno | Apertura automática del turno al autorizar el acceso del conductor. | 2h | Alexander Justo | Done |
-| US-03 | Envío de alerta desde la unidad | T03 | UI Botón de Pánico | Botón de pánico en el menú lateral y pantalla de confirmación de la alerta. | 3h | Andy Pillaca | Done |
-| US-04 | Notificación de la alerta a la central | T04 | Caso de uso Levantar Alerta | Envío de la alerta a la API para que aparezca en el centro de control. | 4h | Andy Pillaca | Done |
-| US-42 | Ubicación asociada al evento | T20 | Ubicación en Alerta | Registro de las coordenadas de la unidad (simuladas) al emitir la alerta. | 3h | Andy Pillaca | Done |
-| US-05 | Persistencia del evento de emergencia | T05 | Persistencia de Alertas | Guardado de la alerta en la API y en localStorage. | 3h | Andy Pillaca | Done |
-| US-40 | Clasificación de alertas por gravedad | T19 | Niveles de Gravedad | Asignación del nivel (crítico, alto, medio o bajo) según el tipo de alerta. | 3h | Andy Pillaca | Done |
-| US-33 | Difusión de la alerta a varios destinatarios | T17 | UI Notificaciones | Vista de destinatarios activos y registro de entregas (datos de muestra). | 4h | Andy Pillaca | Done |
-| US-43 | Seguimiento de la unidad asignada | T21 | UI Mapa y Seguimiento | Mapa con la posición de la unidad, actualizada en tiempo real. | 5h | Andy Pillaca | Done |
-| US-06 | Conteo automático de ocupantes | T06 | UI Conteo de Pasajeros | Conteo simulado de pasajeros a bordo, con nivel de ocupación y aviso de anomalía. | 4h | Alexander Justo | Done |
-| US-07 | Disponibilidad del conteo para reportes | T07 | Consulta de Registros de Pasajeros | Consulta a la API de los últimos registros de pasajeros. | 2h | Alexander Justo | Done |
-| US-25 | Cierre del registro de servicio | T13 | UI Cierre de Servicio | Botón para finalizar el servicio y archivar el turno en localStorage. | 2h | Alexander Justo | Done |
-| US-26 | Consulta del estado del propio servicio | T14 | UI Estado de Servicio | Dashboard con distancia, tiempo, pasajeros, recaudación y resumen del turno. | 3h | Alexander Justo | Done |
-| US-27 | Tablero de estado de la flota | T15 | Dashboard Flota | Centro de control con indicadores, mapa de la flota y lista de unidades. | 5h | Alexander Justo | Done |
-| US-16 | Revisión del historial de emergencias | T10 | UI Registro de Alertas | Listado de alertas con nivel, tipo, hora, coordenadas y estado. | 4h | Andy Pillaca | Done |
-| US-28 | Seguimiento de la ocupación en operación | T16 | Indicador de Ocupación | Pasajeros a bordo de la flota en el centro de control y por unidad. | 4h | Alexander Justo | Done |
+| US-01 | Autenticación del conductor al iniciar la jornada | T01 | UI Autenticación Conductor | Pantalla de login con código de empleado y escáner QR (simulado). | 3h | Bryan Martinez | Done |
+| US-14 | Verificación de habilitación del conductor | T08 | Caso de uso Iniciar Sesión | Validación del código de empleado contra la API antes de abrir la sesión. | 8h | Ian Nawrocki | Done |
+| US-15 | Vínculo entre conductor y unidad | T09 | UI Asignación de Unidades | Vista de las unidades con su conductor, ruta y estado. | 3h | Bryan Martinez | Done |
+| US-02 | Apertura del registro de servicio | T02 | Inicio de Turno | Apertura automática del turno al autorizar el acceso del conductor. | 5h | Boris Alvarado | Done |
+| US-03 | Envío de alerta desde la unidad | T03 | UI Botón de Pánico | Botón de pánico en el menú lateral y pantalla de confirmación de la alerta. | 3h | Bryan Martinez | Done |
+| US-04 | Notificación de la alerta a la central | T04 | Caso de uso Levantar Alerta | Envío de la alerta a la API para que aparezca en el centro de control. | 4h | Bryan Martinez | Done |
+| US-42 | Ubicación asociada al evento | T20 | Ubicación en Alerta | Registro de las coordenadas de la unidad (simuladas) al emitir la alerta. | 3h | Boris Alvarado | Done |
+| US-05 | Persistencia del evento de emergencia | T05 | Persistencia de Alertas | Guardado de la alerta en la API y en localStorage. | 3h | Ian Nawrocki | Done |
+| US-40 | Clasificación de alertas por gravedad | T19 | Niveles de Gravedad | Asignación del nivel (crítico, alto, medio o bajo) según el tipo de alerta. | 5h | Boris Alvarado | Done |
+| US-33 | Difusión de la alerta a varios destinatarios | T17 | UI Notificaciones | Vista de destinatarios activos y registro de entregas (datos de muestra). | 4h | Bryan Martinez | Done |
+| US-43 | Seguimiento de la unidad asignada | T21 | UI Mapa y Seguimiento | Mapa con la posición de la unidad, actualizada en tiempo real. | 5h | Bryan Martinez | Done |
+| US-06 | Conteo automático de ocupantes | T06 | UI Conteo de Pasajeros | Conteo simulado de pasajeros a bordo, con nivel de ocupación y aviso de anomalía. | 4h | Boris Alvarado | Done |
+| US-07 | Disponibilidad del conteo para reportes | T07 | Consulta de Registros de Pasajeros | Consulta a la API de los últimos registros de pasajeros. | 2h | Ian Nawrocki | Done |
+| US-25 | Cierre del registro de servicio | T13 | UI Cierre de Servicio | Botón para finalizar el servicio y archivar el turno en localStorage. | 4h | Boris Alvarado | Done |
+| US-26 | Consulta del estado del propio servicio | T14 | UI Estado de Servicio | Dashboard con distancia, tiempo, pasajeros, recaudación y resumen del turno. | 3h | Ian Nawrocki | Done |
+| US-27 | Tablero de estado de la flota | T15 | Dashboard Flota | Centro de control con indicadores, mapa de la flota y lista de unidades. | 5h | Boris Alvarado | Done |
+| US-16 | Revisión del historial de emergencias | T10 | UI Registro de Alertas | Listado de alertas con nivel, tipo, hora, coordenadas y estado. | 4h | Bryan Martinez | Done |
+| US-28 | Seguimiento de la ocupación en operación | T16 | Indicador de Ocupación | Pasajeros a bordo de la flota en el centro de control y por unidad. | 4h | Ian Nawrocki | Done |
 
 **Nota:** Relación entre las historias de usuario del Sprint 2 y las tareas implementadas, incluyendo su estimación, responsable asignado y estado de ejecución. Las historias US-23, US-24 y US-35 no se implementaron en este Sprint y pasan al siguiente.
 
 ##### 5.2.2.4. Development Evidence for Sprint Review
 
-En este segundo Sprint hemos realizado la implementación del fronte-end, donde todo el equipo ha aportado mediante la gestión de ramas. En la siguiente tabla se muestran los commits realizados.
+En este segundo Sprint se implementó el frontend de la aplicación web de SecurityBus. El trabajo se organizó en ramas feature/* creadas a partir de develop, una por cada bounded context (iam, fleet, operations, alerts y shared), y los cambios se integraron mediante Pull Requests. En la siguiente tabla se muestran los commits más representativos del Sprint.
 
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| AstroBusTeam-FrontEnd | feature/iam | 2317a3abf7b753f4b52e65aed1632721b0c10258 | feature: add iam | -- | [06/10/2026] |
-| AstroBusTeam-FrontEnd | feature/fleet | b4b01276395f339487e1b7b3fdb1e36e9536ef05 | feature: create the fleet component and functions | -- | [06/10/2026] |
-| AstroBusTeam-FrontEnd | feature/operations | 830f93a480adb5f957ff975f007e2058a0b2fd88 | Merge pull request #3 from AstroBusTeam/feature/operations | -- | [06/10/2026] |
-| AstroBusTeam-FrontEnd | feature/alerts | 5c51e4912c9308f6e14fa750d7a1e1316efe779d | Merge pull request #2 from AstroBusTeam/feature/alerts | -- | [06/10/2026] |
-| AstroBusTeam-FrontEnd | feature/shared | 0a53309b6b74c59fb78f26beb44be9cb3cff9339 | Merge pull request #1 from AstroBusTeam/feature/shared | -- | [06/10/2026] |
+| AstroBusTeam-FrontEnd | feature/iam | 2317a3abf7b753f4b52e65aed1632721b0c10258 | feature: add iam | -- | 05/10/2026 |
+| AstroBusTeam-FrontEnd | feature/fleet | b4b01276395f339487e1b7b3fdb1e36e9536ef05 | feature: create the fleet component and functions | -- | 06/10/2026 |
+| AstroBusTeam-FrontEnd | feature/operations | 830f93a480adb5f957ff975f007e2058a0b2fd88 | Merge pull request #3 from AstroBusTeam/feature/operations | -- | 06/10/2026 |
+| AstroBusTeam-FrontEnd | feature/alerts | 5c51e4912c9308f6e14fa750d7a1e1316efe779d | Merge pull request #2 from AstroBusTeam/feature/alerts | -- | 06/10/2026 |
+| AstroBusTeam-FrontEnd | feature/shared | 0a53309b6b74c59fb78f26beb44be9cb3cff9339 | Merge pull request #1 from AstroBusTeam/feature/shared | -- | 06/10/2026 |
 
 ##### 5.2.2.5. Execution Evidence for Sprint Review
 
