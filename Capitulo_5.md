@@ -461,45 +461,49 @@ En este segundo Sprint se implementó el frontend de la aplicación web de Secur
 
 ##### 5.2.2.5. Execution Evidence for Sprint Review
 
-En este Sprint se logró la primera versión funcional de la Web Application de SecurityBus. La aplicación permite que el conductor ingrese con su código de empleado, inicie y cierre su servicio, vea el mapa de su unidad y emita una alerta de emergencia con un solo botón. Del lado de la empresa, permite supervisar la flota desde el centro de control, administrar conductores, vehículos y asignaciones, revisar las alertas y consultar los destinatarios notificados. La interfaz está disponible en español e inglés mediante el selector de idioma del toolbar y se adapta a distintos tamaños de pantalla.
+En este Sprint se logró la primera versión funcional de la Web Application de SecurityBus. La aplicación permite que el conductor ingrese con su código de empleado, inicie y cierre su servicio, vea el mapa de su unidad, consulte el conteo de pasajeros y emita una alerta de emergencia con un solo botón. Del lado de la empresa, permite supervisar la flota desde el centro de control, revisar y resolver las alertas, consultar conductores y unidades, ver los destinatarios de las notificaciones, y revisar el historial de turnos y los indicadores de impacto. Los datos se obtienen de una Fake API REST, y la sesión, el turno en curso y las alertas se conservan en localStorage para que no se pierdan al recargar la página.
 
-Verificación de identidad del conductor. El conductor ingresa su código de empleado (por ejemplo, SF-90210). El sistema valida que el conductor esté habilitado y tenga una asignación activa, y luego lo redirige al dashboard. Las demás rutas quedan protegidas si no existe una sesión.
+Verificación de identidad del conductor. El conductor ingresa su código de empleado (por ejemplo, EMP-001) o utiliza el escáner de código QR, que en esta versión simula la lectura. El sistema consulta la Fake API para validar que el código exista; si es válido, abre la sesión y muestra la pantalla de acceso autorizado, desde la cual el conductor pasa al dashboard con su turno iniciado. Si el código no existe, se muestran los mensajes de error correspondientes. La sesión queda guardada en localStorage.
 
 ![verificación de identidad del conductor](docs/assets/Cap5/sprint02/identity-verification.png)
 
-Dashboard e inicio de servicio. Muestra la unidad y la ruta asignadas, permite iniciar el servicio y, al finalizar el turno, presenta el protocolo de cierre y el resumen del turno.
+Dashboard e inicio de servicio. El turno comienza al autorizarse el acceso. El dashboard muestra los indicadores del turno en curso (distancia, tiempo, pasajeros y recaudación), la ruta operada con acceso al mapa, el estado del sistema y el protocolo de cierre. Al finalizar el servicio, el conductor confirma el cierre y se presenta el resumen del turno, que queda archivado en el historial.
 
 ![dashboard](docs/assets/Cap5/sprint02/dashboard.png)
 
-Mapa del servicio y centro de control. El mapa dibuja la posición de las unidades y las alertas activas sobre los tiles de OpenStreetMap. El conductor ve su unidad y la empresa ve toda la flota.
+Conteo de pasajeros. Muestra los pasajeros a bordo, el total de los que abordaron y bajaron, la capacidad máxima y el nivel de ocupación, con un aviso de anomalía cuando se supera el 90 % de la capacidad. En esta versión el conteo es simulado y el historial de registros se consulta a la Fake API.
+
+![passenger-count](docs/assets/Cap5/sprint02/passenger-count.png)
+
+Mapa del servicio y centro de control. El mapa dibuja la posición de las unidades sobre los tiles de OpenStreetMap. El conductor ve su unidad y la empresa ve toda la flota en el centro de control, junto con los indicadores de unidades activas, alertas activas y pasajeros a bordo. El movimiento de las unidades es simulado y su posición se actualiza periódicamente en la Fake API.
 
 ![control-center](docs/assets/Cap5/sprint02/control-center.png)
 
-Botón de pánico. Disponible en el toolbar, envía la alerta con la ubicación de la unidad y abre una ventana de 5 segundos para cancelarla.
+Botón de pánico. Disponible en el menú lateral del conductor, registra una alerta crítica con la ubicación de la unidad, la envía a la Fake API y la guarda en localStorage. Luego muestra una pantalla de confirmación con las coordenadas y el estado de la central. El botón de cancelar se habilita a los 5 segundos y devuelve al conductor al dashboard.
 
 ![panic-signal](docs/assets/Cap5/sprint02/panic-signal.png)
 
-Registro y detalle de alertas. El registro lista las alertas por fecha y estado y permite reenviar las pendientes. El detalle muestra la línea de tiempo de la alerta, el número de intentos y su confirmación.
+Registro de alertas. En el módulo del conductor, el registro lista las alertas emitidas por su unidad con su nivel, tipo, hora, coordenadas y estado. En el centro de control, la empresa ve las alertas recientes de toda la flota, puede ubicar la unidad en el mapa y marcar las alertas como resueltas.
 
 ![alert-details](docs/assets/Cap5/sprint02/alert-details.png)
 
-Notificaciones. Presenta los destinatarios activos con su rol y canal, y el registro de entregas con su prioridad y estado.
+Notificaciones. Presenta los destinatarios activos con su tipo y estado, y el registro de entregas de las notificaciones. En esta versión los datos son de muestra.
 
 ![notifications](docs/assets/Cap5/sprint02/notifications.png)
 
-Gestión de conductores, vehículos y asignaciones. Tablas con formularios para crear, editar y eliminar registros, y una vista para asociar conductores con unidades y rutas.
+Gestión de conductores y unidades. La vista de conductores presenta una tabla con búsqueda por nombre, apellido o DNI, y la de unidades muestra cada bus con su conductor, ruta, pasajeros, velocidad y estado. Las acciones de edición, bloqueo y reasignación están dispuestas en la interfaz, pero su funcionamiento queda para el siguiente Sprint.
 
 ![vehicles](docs/assets/Cap5/sprint02/vehicles.png)
 
 ![drivers](docs/assets/Cap5/sprint02/drivers.png)
 
-Historial de turnos e impacto en números. El historial lista los turnos con su ruta, distancia, pasajeros e incidentes. La vista de impacto resume indicadores y gráficos de pasajeros y alertas.
+Historial de turnos e impacto en números. El historial lista los turnos con su conductor, bus, ruta, fecha, distancia, pasajeros, recaudación y estado; incluye los turnos finalizados en el navegador (guardados en localStorage) y datos de muestra. La vista de impacto resume los indicadores principales del servicio y la tendencia semanal de alertas.
 
 ![shift-history](docs/assets/Cap5/sprint02/shift-history.png)
 
 Para evidenciar las funcionalidades implementadas, se adjunta un video donde se muestra la navegación entre las vistas, la interacción con el botón de pánico y la comunicación con la Fake API desplegada.
 
-URL del video de ejecución de la Web Application: [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202418823_upc_edu_pe/IQC9xqrLUfGBTKetm5mY0sOrAQ1vPREJ-m9pPR_8LgcypCI?e=u1aGF4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202418823_upc_edu_pe/IQC9xqrLUfGBTKetm5mY0sOrAQ1vPREJ-m9pPR_8LgcypCI?e=u1aGF4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+URL del video de ejecución de la Web Application: [https://upcedupe-my.sharepoint.com/:v:/g/personal/u202418823_upc_edu_pe/IQC9xqrLUfGBTKetm5mY0sOrAQ1vPREJ-m9pPR_8LgcypCI?e=u1aGF4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202418823_upc_edu_pe/IQC9xqrLUfGBTKetm5mY0sOrAQ1vPREJ-m9pPR_8LgcypCI?e=u1aGF4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) 
 
 ##### 5.2.2.6. Services Documentation Evidence for Sprint Review
 
