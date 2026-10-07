@@ -465,41 +465,42 @@ En este Sprint se logró la primera versión funcional de la Web Application de 
 
 Verificación de identidad del conductor. El conductor ingresa su código de empleado (por ejemplo, EMP-001) o utiliza el escáner de código QR, que en esta versión simula la lectura. El sistema consulta la Fake API para validar que el código exista; si es válido, abre la sesión y muestra la pantalla de acceso autorizado, desde la cual el conductor pasa al dashboard con su turno iniciado. Si el código no existe, se muestran los mensajes de error correspondientes. La sesión queda guardada en localStorage.
 
-![verificación de identidad del conductor](docs/assets/Cap5/sprint02/identity-verification.png)
+![verificación de identidad del conductor](docs/assets/Cap5/evidenciaWeb/1.png)
 
 Dashboard e inicio de servicio. El turno comienza al autorizarse el acceso. El dashboard muestra los indicadores del turno en curso (distancia, tiempo, pasajeros y recaudación), la ruta operada con acceso al mapa, el estado del sistema y el protocolo de cierre. Al finalizar el servicio, el conductor confirma el cierre y se presenta el resumen del turno, que queda archivado en el historial.
 
-![dashboard](docs/assets/Cap5/sprint02/dashboard.png)
+![dashboard](docs/assets/Cap5/evidenciaWeb/2.1.png)
+![dashboard](docs/assets/Cap5/evidenciaWeb/2.2.png)
 
 Conteo de pasajeros. Muestra los pasajeros a bordo, el total de los que abordaron y bajaron, la capacidad máxima y el nivel de ocupación, con un aviso de anomalía cuando se supera el 90 % de la capacidad. En esta versión el conteo es simulado y el historial de registros se consulta a la Fake API.
 
-![passenger-count](docs/assets/Cap5/sprint02/passenger-count.png)
+![passenger-count](docs/assets/Cap5/evidenciaWeb/3.png)
 
 Mapa del servicio y centro de control. El mapa dibuja la posición de las unidades sobre los tiles de OpenStreetMap. El conductor ve su unidad y la empresa ve toda la flota en el centro de control, junto con los indicadores de unidades activas, alertas activas y pasajeros a bordo. El movimiento de las unidades es simulado y su posición se actualiza periódicamente en la Fake API.
 
-![control-center](docs/assets/Cap5/sprint02/control-center.png)
+![control-center](docs/assets/Cap5/evidenciaWeb/4.png)
 
 Botón de pánico. Disponible en el menú lateral del conductor, registra una alerta crítica con la ubicación de la unidad, la envía a la Fake API y la guarda en localStorage. Luego muestra una pantalla de confirmación con las coordenadas y el estado de la central. El botón de cancelar se habilita a los 5 segundos y devuelve al conductor al dashboard.
 
-![panic-signal](docs/assets/Cap5/sprint02/panic-signal.png)
+![panic-signal](docs/assets/Cap5/evidenciaWeb/5.png)
 
 Registro de alertas. En el módulo del conductor, el registro lista las alertas emitidas por su unidad con su nivel, tipo, hora, coordenadas y estado. En el centro de control, la empresa ve las alertas recientes de toda la flota, puede ubicar la unidad en el mapa y marcar las alertas como resueltas.
 
-![alert-details](docs/assets/Cap5/sprint02/alert-details.png)
+![alert-details](docs/assets/Cap5/evidenciaWeb/6.png)
 
 Notificaciones. Presenta los destinatarios activos con su tipo y estado, y el registro de entregas de las notificaciones. En esta versión los datos son de muestra.
 
-![notifications](docs/assets/Cap5/sprint02/notifications.png)
+![notifications](docs/assets/Cap5/evidenciaWeb/7.png)
 
 Gestión de conductores y unidades. La vista de conductores presenta una tabla con búsqueda por nombre, apellido o DNI, y la de unidades muestra cada bus con su conductor, ruta, pasajeros, velocidad y estado. Las acciones de edición, bloqueo y reasignación están dispuestas en la interfaz, pero su funcionamiento queda para el siguiente Sprint.
 
-![vehicles](docs/assets/Cap5/sprint02/vehicles.png)
+![vehicles](docs/assets/Cap5/evidenciaWeb/8.png)
 
-![drivers](docs/assets/Cap5/sprint02/drivers.png)
+![drivers](docs/assets/Cap5/evidenciaWeb/9.png)
 
 Historial de turnos e impacto en números. El historial lista los turnos con su conductor, bus, ruta, fecha, distancia, pasajeros, recaudación y estado; incluye los turnos finalizados en el navegador (guardados en localStorage) y datos de muestra. La vista de impacto resume los indicadores principales del servicio y la tendencia semanal de alertas.
 
-![shift-history](docs/assets/Cap5/sprint02/shift-history.png)
+![shift-history](docs/assets/Cap5/evidenciaWeb/10.png)
 
 Para evidenciar las funcionalidades implementadas, se adjunta un video donde se muestra la navegación entre las vistas, la interacción con el botón de pánico y la comunicación con la Fake API desplegada.
 
