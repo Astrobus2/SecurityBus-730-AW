@@ -772,25 +772,29 @@ Repositorio de la Fake API: [https://github.com/AstroBusTeam/AstroBusTeam-fake-a
 
 SecurityBus plantea una solución tecnológica orientada a mejorar la seguridad en el transporte público, considerando las necesidades tanto de las empresas de transporte como de los conductores durante la operación de las unidades.
 
-La propuesta integra funcionalidades como la verificación del conductor mediante código QR, botón de pánico, conteo de pasajeros y monitoreo de las unidades, permitiendo abordar diferentes situaciones relacionadas con el control y la seguridad durante los recorridos.
+La propuesta integra funcionalidades como la verificación del conductor mediante código de empleado y código QR, botón de pánico, conteo de pasajeros y monitoreo de las unidades, permitiendo abordar diferentes situaciones relacionadas con el control y la seguridad durante los recorridos.
 
 El proyecto busca facilitar una respuesta más rápida ante situaciones de riesgo y proporcionar a las empresas información que les permita tener un mayor conocimiento de lo que ocurre durante la operación de sus unidades.
 
 Asimismo, SecurityBus busca complementar las medidas tradicionales de seguridad mediante herramientas digitales que permitan mejorar la comunicación y supervisión entre conductores y empresas de transporte.
 
-Primera versión funcional lograda. Con el Sprint 2 la propuesta pasó de la Landing Page a una Web Application que cubre el flujo del conductor (verificación, inicio y cierre de servicio, botón de pánico) y el de la empresa (centro de control, flota, alertas y notificaciones).
+Primera versión funcional lograda. Con el Sprint 2 la propuesta pasó de la Landing Page a una Web Application que cubre el flujo del conductor (verificación de identidad, inicio y cierre del servicio, conteo de pasajeros y botón de pánico) y el de la empresa (centro de control con el mapa de la flota, alertas, conductores, unidades, notificaciones e historial de turnos).
 
-Funciones críticas ya demostrables. El botón de pánico envía la alerta con la ubicación de la unidad y ofrece 5 segundos para cancelarla. Esto responde a la recomendación de mantener las acciones de emergencia simples y rápidas.
+Función crítica ya demostrable. El botón de pánico registra una alerta crítica con la ubicación de la unidad, la envía a la API y la guarda en localStorage, y de inmediato muestra al conductor una pantalla de confirmación. Esto responde a la recomendación de mantener las acciones de emergencia simples y rápidas.
 
-Arquitectura modular. Organizar el frontend por bounded contexts (iam, operations, fleet y alerts), con capas de dominio, aplicación, infraestructura y presentación, facilita que el trabajo se reparta y que el sistema crezca.
+Arquitectura modular. Organizar el frontend por bounded contexts (conductor, tracking y administration), con capas de dominio, aplicación, infraestructura y presentación, facilita que el trabajo se reparta y que el sistema crezca. La lógica de negocio queda en el dominio y en los casos de uso, sin depender del framework ni de la fuente de datos.
 
-Desacople mediante la Fake API. Consumir una API con la misma estructura de URL que tendrá el servicio real permitió desarrollar la interfaz sin esperar al backend y reducirá el trabajo de integración.
+Desacople mediante la Fake API. Consumir una API con la misma estructura de URL que tendrá el servicio real permitió desarrollar la interfaz sin esperar al backend. Como el acceso a los datos se realiza mediante adaptadores que implementan los repositorios del dominio, reemplazar la Fake API por los servicios reales solo requerirá cambiar el adaptador, lo que reducirá el trabajo de integración.
+
+Persistencia en el navegador. El uso de localStorage permite que la sesión del conductor, el turno en curso, los turnos finalizados y las alertas se conserven al recargar la página. Si el conductor la recarga durante un turno, el cronómetro continúa donde iba y los turnos finalizados aparecen en el historial.
 
 Trabajo colaborativo. GitFlow, Pull Requests y la matriz de líderes y colaboradores permitieron avanzar en paralelo en interfaz, datos de prueba y despliegue.
 
-Despliegue continuo del producto. Ahora hay dos servicios publicados (aplicación en Firebase Hosting, API en Vercel) configurados con variables de entorno.
+Despliegue continuo del producto. Ahora hay dos servicios publicados (la aplicación web en Firebase Hosting y la API en Vercel), y la aplicación se configura mediante variables de entorno para apuntar a cada API según el ambiente.
 
-Experiencia de uso. La interfaz en español e inglés, el tema oscuro y el diseño responsive mantienen la identidad definida en las Style Guidelines.
+Experiencia de uso. El tema oscuro y la identidad visual mantienen lo definido en las Style Guidelines.
+
+Alcance actual. Algunas funciones de esta versión son simuladas y quedan para los siguientes Sprints: la lectura del código QR, la ubicación y el movimiento de las unidades, el conteo de pasajeros y los datos de las notificaciones. Asimismo, las acciones de edición, bloqueo y reasignación de las vistas de administración, el acuse de recibo y reenvío de alertas, y el cálculo del promedio de pasajeros por viaje aún no están implementados.
 
 **Recomendaciones**
 
@@ -798,15 +802,24 @@ Se recomienda priorizar una experiencia de uso sencilla y rápida, especialmente
 
 Es importante continuar validando las necesidades de conductores y empresas de transporte, con el propósito de asegurar que las funcionalidades desarrolladas respondan a situaciones reales presentes durante los recorridos.
 
-También se recomienda garantizar la confiabilidad de funciones críticas como el botón de pánico, la verificación mediante QR y el monitoreo, debido a que su correcto funcionamiento resulta fundamental dentro de la propuesta de seguridad de SecurityBus.
+También se recomienda garantizar la confiabilidad de funciones críticas como el botón de pánico, la verificación del conductor y el monitoreo, debido a que su correcto funcionamiento resulta fundamental dentro de la propuesta de seguridad de SecurityBus.
 
 Finalmente, se recomienda desarrollar SecurityBus de manera progresiva, evaluando los resultados obtenidos con los usuarios y utilizando esta información para mejorar las funcionalidades y adaptar la plataforma a las necesidades del transporte público.
 
-Comunicación en tiempo real. Las alertas y la posición de las unidades hoy se consultan de la Fake API. Para que la central reaccione a tiempo, se necesitaría un mecanismo como WebSockets o actualización periódica.
+Reemplazar las funciones simuladas por datos reales. Se recomienda incorporar la lectura del código QR con la cámara del dispositivo, la ubicación real de las unidades mediante GPS y la integración con sensores para el conteo de pasajeros, de modo que la información que ve la central corresponda a lo que ocurre en la unidad.
 
-Reemplazar la Fake API por los Web Services reales y documentarlos con OpenAPI, ya que json-server no valida datos ni ofrece seguridad.
+Comunicación en tiempo real. La posición de las unidades y las alertas se generan en el cliente y se envían a la Fake API, pero los demás usuarios no las reciben de inmediato. Para que la central reaccione a tiempo, se necesitaría un mecanismo como WebSockets o una actualización periódica de los datos desde el servidor.
 
-Autenticación real. Hoy el ingreso se valida solo con el código de empleado; conviene usar tokens y control de permisos por rol (conductor y empresa).
+Reemplazar la Fake API por los Web Services reales y documentarlos con OpenAPI, ya que json-server no valida datos ni ofrece seguridad, y su persistencia depende de un archivo. Con la arquitectura actual, el cambio se concentra en los adaptadores de infraestructura.
+
+Autenticación real. Hoy el ingreso se valida solo con el código de empleado y no se verifica el estado del conductor ni se protegen las rutas; conviene usar tokens, control de permisos por rol (conductor y empresa) y guardas de navegación. Asimismo, localStorage es propio de cada navegador y no es un medio seguro, por lo que la información sensible y el historial definitivo deben almacenarse en el servidor.
+
+Completar las funcionalidades pendientes. Quedan por implementar las acciones de administración (crear, editar y bloquear conductores, y reasignar unidades), el acuse de recibo y reenvío de las alertas, y el promedio de pasajeros por viaje.
+
+Incorporar pruebas automatizadas. La separación en dominio y casos de uso facilita probar la lógica de negocio sin depender de la interfaz ni de la red. Se recomienda sumar pruebas unitarias de estos componentes y automatizar la compilación y el despliegue.
+
+Validar la accesibilidad y el diseño responsive. Se recomienda comprobar la interfaz en dispositivos reales y con los estándares WCAG, especialmente en las pantallas que usa el conductor durante el recorrido.
+
 
 ---
 
