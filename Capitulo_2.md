@@ -51,8 +51,8 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
     <td colspan="2">Productos</td>
     <td>SecurityBus</td>
     <td>Prosegur</td>
-    <td>RTP</td>
-    <td>Mi Transporte</td>
+    <td>VeriSure</td>
+    <td>Hunter Perú</td>
   </tr>
 
   <tr>
@@ -61,15 +61,15 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
     <td>Plataforma de seguridad para transporte público con monitoreo en tiempo real.</td>
     <td>Seguridad integral con vigilancia presencial, alarmas y transporte de valores.</td>
     <td>Especialistas en alarmas de alta tecnología conectadas a central de monitoreo.</td>
-    <td>Sistema de transporte con seguimiento en tiempo real y reportes ciudadanos.</td>
+    <td>Servicio especializado en monitoreo, rastreo satelital, control telemático y recupero de vehículos.</td>
   </tr>
 
   <tr>
     <td>Ventaja competitiva</td>
     <td>Monitoreo en tiempo real, botón de emergencia y conteo de pasajeros mediante sensores.</td>
     <td>Gran respaldo de marca, flota física propia y central de monitoreo.</td>
-    <td> Alarma con tecnología propia anti-inhibición y fotodetectores de intrusos.</td>
-    <td>Monitoreo, protocolos de seguimiento en tiempo real y reportes ciudadanos.</td>
+    <td>Alarma con tecnología propia anti-inhibición y fotodetectores de intrusos.</td>
+    <td>Alta tasa de efectividad en recuperación vehicular con soporte de radiofrecuencia (invulnerable a jammers) y coordinación policial.</td>
   </tr>
 
   <tr>
@@ -78,7 +78,7 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
     <td>Consorcios y empresas de transporte público y operadores de vehículos.</td>
     <td>Corporativos, bancos, comercios y residencias de nivel medio-alto.</td>
     <td>Hogares particulares, familias y pequeños negocios o locales comerciales.</td>
-    <td>Población de zonas periféricas y estudiantes.</td>
+    <td>Empresas de logística, carga pesada, flotas de transporte urbano, aseguradoras y vehículos particulares.</td>
   </tr>
 
   <tr>
@@ -86,7 +86,7 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
     <td>Enfatizar la seguridad durante la ruta mediante un sistema integrado al vehículo.</td>
     <td>Venta corporativa B2B basada en la confianza y experiencia institucional.</td>
     <td>Publicidad masiva emocional en TV y radio basada en la prevención del robo.</td>
-    <td>Posicionamiento del transporte como sistema integrado, moderno y eficiente.</td>
+    <td>Campañas de posicionamiento enfocadas en la protección del patrimonio ("Si se va, viene") y la mitigación de riesgos de pérdidas.</td>
   </tr>
 
   <tr>
@@ -95,7 +95,7 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
     <td>Botón de pánico, información sobre paraderos y monitoreo de riesgos 24h.</td>
     <td>Monitoreo de alarmas, videovigilancia, accesos y custodia física.</td>
     <td>Alarma inteligente, sensores de movimiento, botón S.O.S y cámaras cloud.</td>
-    <td>Transporte multimodal, Tarjeta Mi Movilidad, App Mi Saldo y Mi Pasaje.</td>
+    <td>Dispositivos GPS/VHF ocultos, plataformas de gestión de flotas y soluciones de video con Inteligencia Artificial para monitoreo de cabinas.</td>
   </tr>
 
   <tr>
@@ -103,7 +103,7 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
     <td>Desde S/. 99 por unidad/mes incluyendo instalación. 20% de descuento desde 3 unidades.</td>
     <td>Costo de instalación inicial + mensualidades desde S/. 120.</td>
     <td>Equipo en comodato/compra + mensualidad promedio de S/. 150 a S/. 220.</td>
-    <td>Tarifa plana S/. 2.00 y tarifa preferencial S/. 1.00.</td>
+    <td>Pago inicial por instalación del hardware del dispositivo más planes de suscripción mensual según el tamaño de la flota.</td>
   </tr>
 
   <tr>
@@ -111,7 +111,7 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
     <td>Web y aplicación móvil.</td>
     <td>Ejecutivos corporativos, telemarketing y oficinas nacionales.</td>
     <td>Fuerza de ventas directa a domicilio (puerta a puerta) y canales web.</td>
-    <td>Web, App Mi Saldo y puntos físicos.</td>
+    <td>Red de talleres de instalación autorizados en las principales ciudades del Perú, ejecutivos corporativos y canal digital.</td>
   </tr>
 
   <tr>
@@ -120,7 +120,7 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
     <td>Monitoreo en tiempo real, botón de emergencia, conteo de pasajeros y enfoque en seguridad.</td>
     <td>Capacidad financiera, presencia global y personal muy capacitado.</td>
     <td>Tecnología muy innovadora, app móvil intuitiva y rápida instalación.</td>
-    <td>Marca unificada, interoperabilidad y modernización de flota.</td>
+    <td>Sólida infraestructura de monitoreo 24/7, tecnología dual propia y convenios directos de respuesta inmediata en las calles.</td>
   </tr>
 
   <tr>
@@ -128,7 +128,7 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
     <td>Startup en etapa inicial, inversión para sensores y dependencia de adopción por empresas.</td>
     <td>Estructura burocrática y poca especialización en transporte público en ruta.</td>
     <td>Costo mensual continuo y nula experiencia en seguridad vehicular masiva.</td>
-    <td>Resistencia al cambio y dependencia de infraestructura disponible.</td>
+    <td>Enfoque meramente reactivo y operativo (salvaguardar el activo); no está diseñado para optimizar la experiencia de viaje del pasajero de transporte masivo.</td>
   </tr>
 
   <tr>
@@ -136,7 +136,7 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
     <td>Expansión a provincias, acuerdos con la policía y alianzas con empresas de transporte.</td>
     <td>Integración de Inteligencia Artificial en sistemas de vigilancia.</td>
     <td>Crecimiento del mercado de casas inteligentes (Smart Homes).</td>
-    <td>Crecimiento urbano y oportunidades relacionadas con la crisis de combustibles.</td>
+    <td>Crecimiento en analítica predictiva de hábitos de manejo, control de combustible y seguridad vial automatizada.</td>
   </tr>
 
   <tr>
@@ -144,7 +144,7 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
     <td>Extorsiones a transportistas, competencia tecnológica, resistencia a la adopción y costos de implementación.</td>
     <td>Alternativas tecnológicas económicas de autogestión sin mensualidad.</td>
     <td>Cámaras de seguridad baratas con conexión Wi-Fi que el usuario controla solo.</td>
-    <td>Resistencia al cambio, inseguridad e incidentes de vandalismo.</td>
+    <td> Proliferación de empresas de GPS genéricas low-cost y plataformas de software libre autogestionadas.</td>
   </tr>
 </table>
 
