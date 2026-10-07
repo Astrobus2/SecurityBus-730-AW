@@ -50,7 +50,7 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
   <tr>
     <td colspan="2">Productos</td>
     <td>SecurityBus</td>
-    <td>Metropolitano</td>
+    <td>Prosegur</td>
     <td>RTP</td>
     <td>Mi Transporte</td>
   </tr>
@@ -59,16 +59,16 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
     <td rowspan="2">Perfil</td>
     <td>Overview</td>
     <td>Plataforma de seguridad para transporte público con monitoreo en tiempo real.</td>
-    <td>Sistema de transporte urbano con estaciones, rutas definidas y cámaras.</td>
-    <td>Sistema de transporte con cámaras, monitoreo y capacitación del personal.</td>
+    <td>Seguridad integral con vigilancia presencial, alarmas y transporte de valores.</td>
+    <td>Especialistas en alarmas de alta tecnología conectadas a central de monitoreo.</td>
     <td>Sistema de transporte con seguimiento en tiempo real y reportes ciudadanos.</td>
   </tr>
 
   <tr>
     <td>Ventaja competitiva</td>
     <td>Monitoreo en tiempo real, botón de emergencia y conteo de pasajeros mediante sensores.</td>
-    <td>Infraestructura organizada, estaciones, rutas definidas, carriles exclusivos y videovigilancia.</td>
-    <td>Cámaras de seguridad, monitoreo en tiempo real y capacitación del personal.</td>
+    <td>Gran respaldo de marca, flota física propia y central de monitoreo.</td>
+    <td> Alarma con tecnología propia anti-inhibición y fotodetectores de intrusos.</td>
     <td>Monitoreo, protocolos de seguimiento en tiempo real y reportes ciudadanos.</td>
   </tr>
 
@@ -76,16 +76,16 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
     <td rowspan="2">Perfil de Marketing</td>
     <td>Mercado Objetivo</td>
     <td>Consorcios y empresas de transporte público y operadores de vehículos.</td>
-    <td>Usuarios urbanos de Lima Metropolitana.</td>
-    <td>Población de zonas periféricas, estudiantes y grupos vulnerables.</td>
+    <td>Corporativos, bancos, comercios y residencias de nivel medio-alto.</td>
+    <td>Hogares particulares, familias y pequeños negocios o locales comerciales.</td>
     <td>Población de zonas periféricas y estudiantes.</td>
   </tr>
 
   <tr>
     <td>Estrategias de Marketing</td>
     <td>Enfatizar la seguridad durante la ruta mediante un sistema integrado al vehículo.</td>
-    <td>Servicio rápido, moderno, formal y seguro, destacando eficiencia y orden.</td>
-    <td>Campaña "Yo Soy RTP" y sustentabilidad mediante unidades eléctricas.</td>
+    <td>Venta corporativa B2B basada en la confianza y experiencia institucional.</td>
+    <td>Publicidad masiva emocional en TV y radio basada en la prevención del robo.</td>
     <td>Posicionamiento del transporte como sistema integrado, moderno y eficiente.</td>
   </tr>
 
@@ -93,24 +93,24 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
     <td rowspan="3">Perfil de Producto</td>
     <td>Productos & Servicios</td>
     <td>Botón de pánico, información sobre paraderos y monitoreo de riesgos 24h.</td>
-    <td>Transporte troncal, tarjeta recargable, estaciones seguras e información de rutas.</td>
-    <td>Servicio ordinario, expreso, Ecobús y Nochebús.</td>
+    <td>Monitoreo de alarmas, videovigilancia, accesos y custodia física.</td>
+    <td>Alarma inteligente, sensores de movimiento, botón S.O.S y cámaras cloud.</td>
     <td>Transporte multimodal, Tarjeta Mi Movilidad, App Mi Saldo y Mi Pasaje.</td>
   </tr>
 
   <tr>
     <td>Precios & Costos</td>
     <td>Desde S/. 99 por unidad/mes incluyendo instalación. 20% de descuento desde 3 unidades.</td>
-    <td>S/. 3.50 por viaje.</td>
-    <td>De S/. 0.40 para servicio ordinario a S/. 1.50 para Nochebús.</td>
+    <td>Costo de instalación inicial + mensualidades desde S/. 120.</td>
+    <td>Equipo en comodato/compra + mensualidad promedio de S/. 150 a S/. 220.</td>
     <td>Tarifa plana S/. 2.00 y tarifa preferencial S/. 1.00.</td>
   </tr>
 
   <tr>
     <td>Canales de distribución (Web y/o Móvil)</td>
     <td>Web y aplicación móvil.</td>
-    <td>Web, móvil, recarga digital y puntos físicos.</td>
-    <td>App, tarjeta de movilidad integrada y sitio web oficial.</td>
+    <td>Ejecutivos corporativos, telemarketing y oficinas nacionales.</td>
+    <td>Fuerza de ventas directa a domicilio (puerta a puerta) y canales web.</td>
     <td>Web, App Mi Saldo y puntos físicos.</td>
   </tr>
 
@@ -118,32 +118,32 @@ Es un sistema orientado a ofrecer una experiencia de transporte integrada, incor
     <td rowspan="4">Análisis SWOT</td>
     <td>Fortalezas</td>
     <td>Monitoreo en tiempo real, botón de emergencia, conteo de pasajeros y enfoque en seguridad.</td>
-    <td>Marca reconocida, sistema formal, infraestructura organizada y modernización digital.</td>
-    <td>Tarifas sociales subsidiadas, flota moderna eléctrica y conductores capacitados.</td>
+    <td>Capacidad financiera, presencia global y personal muy capacitado.</td>
+    <td>Tecnología muy innovadora, app móvil intuitiva y rápida instalación.</td>
     <td>Marca unificada, interoperabilidad y modernización de flota.</td>
   </tr>
 
   <tr>
     <td>Debilidades</td>
     <td>Startup en etapa inicial, inversión para sensores y dependencia de adopción por empresas.</td>
-    <td>Saturación en horas punta y posibles fallas operativas.</td>
-    <td>Dependencia de subsidios y necesidad de mantener la flota moderna.</td>
+    <td>Estructura burocrática y poca especialización en transporte público en ruta.</td>
+    <td>Costo mensual continuo y nula experiencia en seguridad vehicular masiva.</td>
     <td>Resistencia al cambio y dependencia de infraestructura disponible.</td>
   </tr>
 
   <tr>
     <td>Oportunidades</td>
     <td>Expansión a provincias, acuerdos con la policía y alianzas con empresas de transporte.</td>
-    <td>Expansión urbana y digitalización del servicio.</td>
-    <td>Expansión de rutas eléctricas y modernización del transporte.</td>
+    <td>Integración de Inteligencia Artificial en sistemas de vigilancia.</td>
+    <td>Crecimiento del mercado de casas inteligentes (Smart Homes).</td>
     <td>Crecimiento urbano y oportunidades relacionadas con la crisis de combustibles.</td>
   </tr>
 
   <tr>
     <td>Amenazas</td>
     <td>Extorsiones a transportistas, competencia tecnológica, resistencia a la adopción y costos de implementación.</td>
-    <td>Inseguridad ciudadana, saturación en horas punta y fallas operativas.</td>
-    <td>Competencia del transporte concesionado informal y congestión vial.</td>
+    <td>Alternativas tecnológicas económicas de autogestión sin mensualidad.</td>
+    <td>Cámaras de seguridad baratas con conexión Wi-Fi que el usuario controla solo.</td>
     <td>Resistencia al cambio, inseguridad e incidentes de vandalismo.</td>
   </tr>
 </table>
