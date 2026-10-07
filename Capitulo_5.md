@@ -390,7 +390,22 @@ Posteriormente, los cambios fueron integrados mediante Pull Requests, permitiend
 | Time | 5:30 PM |
 | Location | Virtual |
 | Prepared By | Justo Yauricasa, Alexander Paolo |
-| Attendees (to planning meeting) | Pillaca Gonzales, Andy Saúl<br>Justo Yauricasa, Alexander Paolo |
+| Attendees (to planning meeting) | ##### 5.2.2.1. Sprint Planning 2
+
+| Sprint # | Sprint 2 |
+| :--- | :--- |
+| **Sprint Planning Background** | |
+| Date | 27/09/2026 |
+| Time | 5:30 PM |
+| Location | Virtual |
+| Prepared By | Martinez Ramos, Bryan Felix |
+| Attendees (to planning meeting) | Alvarado Millan, Boris<br>Nawrocki Loureiro, Ian Andre |
+| **Sprint 2 Review Summary** | Durante este sprint, el equipo desarrolló la primera versión funcional de la aplicación web de SecurityBus con Vue 3, Vite y TypeScript. El código se organizó bajo una arquitectura DDD, con tres bounded contexts (conductor, tracking y administration) y un núcleo compartido, cada uno con sus capas de dominio, aplicación, infraestructura y presentación. Se implementó el flujo del conductor (verificación con código de empleado, inicio y cierre del servicio, mapa de la unidad, conteo de pasajeros y botón de pánico) y el panel de administración (centro de control con el mapa de la flota y la gestión de alertas, además de las vistas de conductores, unidades, notificaciones, historial de turnos e impacto en números). La aplicación consume una Fake API REST con json-server y conserva la sesión, el turno en curso y las alertas en localStorage, de modo que no se pierden al recargar la página. Además, se dejó configurado su despliegue en Cloudflare. |
+| **Sprint 2 Retrospective Summary** | El equipo logró avanzar de forma ordenada gracias a la separación por bounded contexts y capas, que permitió repartir el trabajo sin que unos módulos interfirieran con otros, y al uso de componentes reutilizables, que agilizó la construcción de las vistas. La Fake API permitió desarrollar la interfaz sin depender del backend. Como puntos de mejora, identificamos que para los próximos sprints debemos coordinar mejor la distribución de tareas, acordar desde el inicio el contrato de la API (nombres de recursos y campos), incorporar pruebas automatizadas y reemplazar los comportamientos simulados (escáner QR, movimiento de las unidades y conteo de pasajeros) por datos reales. |
+| **Sprint Goal & User Stories** | |
+| **Sprint 2 Goal** | Implementar la primera versión funcional de la aplicación web de SecurityBus, cubriendo el flujo del conductor (verificación, servicio y botón de pánico) y el panel de administración (centro de control, conductores, unidades, notificaciones e historial), con una arquitectura DDD, datos servidos por una Fake API y despliegue en Cloudflare, de modo que luego pueda reemplazarse la Fake API por los servicios reales del backend. |
+| **Sprint 2 Velocity** | 109 |
+| **Sum of Story Points** | 109 |<br>Justo Yauricasa, Alexander Paolo |
 | **Sprint 2 Review Summary** | Durante este sprint, el equipo desarrolló la primera versión funcional de la aplicación web de SecurityBus con Vue 3, Vite y TypeScript. El código se organizó bajo una arquitectura DDD, con tres bounded contexts (conductor, tracking y administration) y un núcleo compartido, cada uno con sus capas de dominio, aplicación, infraestructura y presentación. Se implementó el flujo del conductor (verificación con código de empleado, inicio y cierre del servicio, mapa de la unidad, conteo de pasajeros y botón de pánico) y el panel de administración (centro de control con el mapa de la flota y la gestión de alertas, además de las vistas de conductores, unidades, notificaciones, historial de turnos e impacto en números). La aplicación consume una Fake API REST con json-server y conserva la sesión, el turno en curso y las alertas en localStorage, de modo que no se pierden al recargar la página. Además, se dejó configurado su despliegue en Cloudflare. |
 | **Sprint 2 Retrospective Summary** | El equipo logró avanzar de forma ordenada gracias a la separación por bounded contexts y capas, que permitió repartir el trabajo sin que unos módulos interfirieran con otros, y al uso de componentes reutilizables, que agilizó la construcción de las vistas. La Fake API permitió desarrollar la interfaz sin depender del backend. Como puntos de mejora, identificamos que para los próximos sprints debemos coordinar mejor la distribución de tareas, acordar desde el inicio el contrato de la API (nombres de recursos y campos), incorporar pruebas automatizadas y reemplazar los comportamientos simulados (escáner QR, movimiento de las unidades y conteo de pasajeros) por datos reales. |
 | **Sprint Goal & User Stories** | |
