@@ -579,7 +579,7 @@ Persistencia en el navegador: la sesión del conductor, el turno en curso, los t
 - Se publicó el proyecto y Vercel generó la URL pública del servicio.
 - Se verificó el funcionamiento consultando los recursos desde el navegador (por ejemplo, /api/v1/conductores) y desde la Web Application.
 
-![evidence-fake-api](docs/assets/Cap5/sprint02/evidence-fake-api.png)
+![evidence-fake-api](docs/assets/Cap5/sprint02/evAPI1.png)
 
 **Despliegue de la Web Application en Firebase Hosting**
 
@@ -589,11 +589,11 @@ Persistencia en el navegador: la sesión del conductor, el turno en curso, los t
 - Se generó la versión de producción con npm run build, que verifica los tipos con vue-tsc y luego compila con Vite, y se publicó con firebase deploy --only hosting.
 <br>
 
-![evidence-frontend-firebase](docs/assets/Cap5/sprint02/evidence-frontend-firebase.png)
+![evidence-frontend-firebase](docs/assets/Cap5/sprint02/evWEB.png)
 
-La Web Application desplegada está disponible en: [https://securitybus-730-aw-front-7bf31.web.app/](https://securitybus-730-aw-front-7bf31.web.app/)
+La Web Application desplegada está disponible en: [https://securitybus-730-aw-front-7bf31.web.app/](https://securitybus-ab878.web.app)
 
-Repositorio de la Web Application: [https://github.com/AstroBusTeam/AstroBusTeam-FrontEnd](https://github.com/AstroBusTeam/AstroBusTeam-FrontEnd)
+Repositorio de la Web Application: [https://github.com/AstroBusTeam/AstroBusTeam-FrontEnd](https://github.com/Astrobus2/SecurityBus-frontend)
 
 
 ##### 5.2.2.8. Team Collaboration Insights during Sprint
